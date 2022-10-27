@@ -1,6 +1,6 @@
 const fs = require("fs");
 class Contenedor {
-    constructor(nombre, id) {
+    constructor(nombre) {
         this.nombre = nombre + ".txt"
         this.id = 0;
         this.productos = [];
@@ -43,9 +43,10 @@ class Contenedor {
     async deleteById(id) {
         let newProdFile = []
         try {
-            let ProdFile = JSON.parse(await fs.promises.readFile(this.nombreDeArchivo, "utf-8"))
+            let ProdFile = JSON.parse(await fs.promises.readFile(this.nombre, "utf-8"))
             ProdFile.forEach((prod) => { if (prod.id != id) { newProdFile.push(prod) } })
-            await fs.promises.writeFile(this.nombreDeArchivo, JSON.stringify(newProdFile))
+            await fs.promises.writeFile(this.nombre, JSON.stringify(newProdFile))
+            console.log("elemento eliminado exitosamente")
         } catch (err) { throw new Error("Error al eliminar el producto") }
     }
 
@@ -53,8 +54,8 @@ class Contenedor {
         let empty = [];
 
         try {
-            await fs.promises.writeFile(this.nombreDeArchivo, JSON.stringify(empty))
-
+            await fs.promises.writeFile(this.nombre, JSON.stringify(empty))
+            console.log("borrado")
         } catch (err) { throw new Error("Error al escribir archivo") }
     }
 
@@ -76,13 +77,19 @@ const PRODUCTO3 = {
     price: 120,
     thumbnail: "https://javix33.github.io/wookie/resources/imagenes/productos/red2.jpg"
 };
+const PRODUCTO4 = {
+    title: "test",
+    price: 120,
+    thumbnail: "test"
+};
 
 (async function () {
-    console.log(await productos.save(PRODUCTO1));
-    console.log(await productos.save(PRODUCTO2));
-    console.log(await productos.save(PRODUCTO3));
-    console.log(await productos.getById(2));
-    console.log(await productos.getAll())
-    console.log(await productos.deleteById(2));
-    console.log(await productos.deleteAll());
+    await productos.save(PRODUCTO1);
+    await productos.save(PRODUCTO2);
+    await productos.save(PRODUCTO3);
+    //await productos.getById(0);
+    //await productos.getAll()
+    await productos.deleteById(1);
+    //await productos.deleteAll();
+    await productos.save(PRODUCTO4);
 })();
