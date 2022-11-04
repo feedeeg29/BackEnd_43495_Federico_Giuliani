@@ -1,0 +1,17 @@
+{
+  "name": "desafio_04_api_restful",
+  "version": "1.0.0",
+  "description": "Desafio CoderHouse API RESTful",
+  "main": "..src/Server/server.js",
+  "scripts": {
+    "test": "nodemon ./src/Server/server.js"
+  },
+  "author": "Federico Giuliani",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  }
+}
