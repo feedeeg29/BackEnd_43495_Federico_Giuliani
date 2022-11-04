@@ -2,21 +2,26 @@ const fs = require("fs");
 class Contenedor {
     constructor(nombre) {
         this.nombre = nombre + ".txt"
-        this.id = 0;
-        this.productos = [];
     }
     async save(Product) {
-        let newProduct = { ...Product, id: this.id };
-        this.productos.push(newProduct);
-        async function write(archivo, array) {
-            try {
-                await fs.promises.writeFile(archivo, JSON.stringify(array));
-            } catch (err) { throw new Error("Error al guardar") }
+        try {
+            if (fs.existsSync(this.nombre)) {
+                const data = await fs.promises.readFile(this.nombre, "utf-8");
+                const array = JSON.parse(data);
+                Product.id = array.length + 1;
+                array.push(Product);
+                await fs.promises.writeFile(this.nombre, JSON.stringify(array, null, 2));
+                return Product.id;
+            } else {
+                Product.id = 1;
+                await fs.promises.writeFile(this.nombre, JSON.stringify([Product], null, 2));
+                return Product.id;
+            }
+        } catch (error) {
+            throw new Error("Error al guardar");
         }
-        await write(this.nombre, this.productos);
-        Product.id = this.id++;
-        return newProduct.id
     }
+
     async getById(id) {
         let elemento
         try {
@@ -31,6 +36,7 @@ class Contenedor {
             } else { return null };
         } catch (err) { throw new Error("Error, no se pudo leer el archivo") }
     }
+
     async getAll() {
 
         try {
@@ -62,6 +68,8 @@ class Contenedor {
 }
 let productos = new Contenedor("Productos");
 
+
+
 const PRODUCTO1 = {
     title: "blukie",
     price: 120,
@@ -84,12 +92,12 @@ const PRODUCTO4 = {
 };
 
 (async function () {
-    await productos.save(PRODUCTO1);
+    /*await productos.save(PRODUCTO1);
     await productos.save(PRODUCTO2);
-    await productos.save(PRODUCTO3);
+    await productos.save(PRODUCTO3);*/
     //await productos.getById(0);
-    //await productos.getAll()
-    await productos.deleteById(1);
+    //console.log(await productos.getAll());
+    //await productos.deleteById(4);
     //await productos.deleteAll();
-    await productos.save(PRODUCTO4);
+    //await productos.save(PRODUCTO4);
 })();
