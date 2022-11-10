@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,10 +9,11 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/siwalikm/quick-form-css@2.2.2/qfc-dark.css">
   <title>Entrega 4</title>
 </head>
+
 <body>
   <div class="qfc-container">
     <h2>Ingresar producto</h2>
-    <form action="/api/productos" method="post">
+    <form action="/api/productos/all" method="post">
       <label>Nombre: </label><input placeholder="Nombre  del producto" type="text" name="name"><br><br>
       <label>Precio: </label><input placeholder="Precio  del producto" type="text" name="price"><br><br>
       <label>Imagen: </label><input placeholder="URL de la imagen del producto" type="text" name="thumbnail"><br><br>
@@ -19,4 +21,5 @@
     </form>
   </div>
 </body>
+
 </html>
