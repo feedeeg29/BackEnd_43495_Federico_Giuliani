@@ -5,6 +5,9 @@ const listOfProducts = () => {
   return products
 }
 
+
+
+
 const getProduct = (id) => {
   return (products.find(product => product.id === parseInt(id)) || { error: 'Producto no encontrado' })
 }

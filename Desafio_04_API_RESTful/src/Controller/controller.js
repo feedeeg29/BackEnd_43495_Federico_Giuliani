@@ -2,6 +2,7 @@ const products = require("../Products/products");
 class Actions {
   static getAll() {
     return products.listOfProducts();
+    //console.log(products.listOfProducts());
   }
   static getOne(id) {
     return products.getProduct(id);

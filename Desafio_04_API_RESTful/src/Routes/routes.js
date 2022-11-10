@@ -4,13 +4,13 @@ const router = Router();
 const Actions = require("../Controller/controller");
 
 // return all products
-router.get("/", (req, res) => {
+router.get("/all", (req, res) => {
   res.send(Actions.getAll());
 });
 
 // return a product by id
 router.get("/:id", (req, res) => {
-  const {id} = req.params;
+  const { id } = req.params;
   res.send(Actions.getOne(id));
 });
 
@@ -21,7 +21,7 @@ router.post("/", (req, res) => {
 
 // update a product
 router.put("/:id", (req, res) => {
-  const {id} = req.params
+  const { id } = req.params
   const body = req.body
   res.send(Actions.update(id, body));
 });
