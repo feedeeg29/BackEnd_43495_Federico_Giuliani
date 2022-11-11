@@ -36,7 +36,6 @@ class Contenedor {
             } else { return null };
         } catch (err) { throw new Error("Error, no se pudo leer el archivo") }
     }
-
     async getAll() {
 
         try {
@@ -67,8 +66,6 @@ class Contenedor {
 
 }
 let productos = new Contenedor("Productos");
-
-
 
 const PRODUCTO1 = {
     title: "blukie",
