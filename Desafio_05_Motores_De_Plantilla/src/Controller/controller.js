@@ -1,20 +1,19 @@
 const products = require("../Products/products");
 class Actions {
   static getAll() {
-    return products.listOfProducts();
-    //console.log(products.listOfProducts());
+    return products.listOfProducts()
   }
   static getOne(id) {
-    return products.getProduct(id);
+    return products.getProduct(id)
   }
   static add(product) {
-    return products.addProduct(product);
+    return products.addProduct(product)
   }
   static update(id, newContent) {
-    return products.updateProduct(id, newContent);
+    return products.updateProduct(id, newContent)
   }
   static delete(id) {
-    return products.deleteProduct(id);
+    return products.deleteProduct(id)
   }
 }
 
