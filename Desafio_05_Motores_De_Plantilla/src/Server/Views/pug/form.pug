@@ -1,0 +1,20 @@
+html 
+    head 
+        link(rel="stylesheet", href="form.css")
+        title="Inicio"
+    body 
+        h1(class="tittle")="Formulario de producto"
+        h2(class="instructions")=" Llena los campos requeridos para guardar un nuevo producto"
+        form(class="FormContainer" action="/productos" method="post")
+            label(class="etiquetaForm" for="tittle")="Nombre de producto"
+            input(placeholder="Ingresa un nombre" class="inputForm" type="text" name="tittle")
+
+            label(class="etiquetaForm" for="price")="Precio del producto"
+            input(placeholder="Ingresa el precio" class="inputForm" type="text" name="price")
+
+            label(class="etiquetaForm" for="thumbnail")="Url de la imagen del producto"
+            input(placeholder="url de la imagen" class="inputForm" type="text" name="thumbnail")
+
+            input(class="button" type="submit" value="Añadir")
+            
+        a(class="botonTienda" href="/productos")="Tienda"

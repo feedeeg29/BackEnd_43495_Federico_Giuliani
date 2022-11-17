@@ -6,9 +6,8 @@ const app = express()
 
 
 //Engine Handlebars
-const { engine } = require('express-handlebars')
-//Engine PUG
-//const {engine} = require('express-pug')
+//const { engine } = require('express-handlebars')
+
 //Engine EJS
 //const {engine} = require('express-ejs')
 
@@ -27,8 +26,16 @@ app.use('/productos', router)
 //app.set('view engine', 'ejs');
 
 //Views Pug
-//app.set('views', './src/Views/pug');
-//app.set('view engine', 'pug');
+app.set('views', __dirname + '/Views/pug');
+app.set('view engine', 'pug');
+app.get("/all", (req, res) => {
+  res.render("products")
+})
+app.get("/productos", (req, res) => {
+  res.render("main")
+});
+
+
 
 //Views Handlebars
 /*app.set('view engine', 'hbs');

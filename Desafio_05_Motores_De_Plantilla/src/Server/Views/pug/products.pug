@@ -1,0 +1,22 @@
+html 
+    head 
+        link(rel="stylesheet", href="productos.css")
+        title="Tienda"
+    body 
+        h2(class="productsTittle")="Binvenido a la tienda"
+            
+        
+
+        if products.length===0
+            h2(class="productsTittle")="No hay productos agregados"
+        else
+            ul(class="productListContainer")   
+                each prod in products 
+                    li(class="productCard")
+                        h2(class="productTittle")=prod.name
+                        img(class="productImage" src=prod.thumbnail alt=prod.name)
+                        p(class="productPrice")="Precio " +prod.price +".00"
+                    
+
+
+        a(class="botonInicio" href="/")="Inicio"

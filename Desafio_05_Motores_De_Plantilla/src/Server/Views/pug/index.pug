@@ -1,9 +1,0 @@
-if products.lenght > 0
-  each product in products
-    .product
-      h2= product.name
-      p= product.description
-      p= product.price
-      a(href="/products/" + product.id) View
-else
-  p No products found
