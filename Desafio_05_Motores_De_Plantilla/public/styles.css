@@ -1,0 +1,182 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    font-family: sans-serif;
+    background-color: black;
+}
+
+.nav {
+    margin-top: 2%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    min-height: 50px;
+    border-bottom: solid white 2px;
+}
+
+.navLink {
+    padding: 2px;
+    text-decoration: none;
+    font-family: sans-serif;
+    color: white;
+    font-size: 36px;
+    border: solid white 1px;
+    border-radius: 10px;
+    margin-bottom: 2%;
+    background-color: rgb(43, 171, 226);
+}
+
+.tittle {
+    margin-top: 2%;
+    text-align: center;
+    font-size: 40px;
+    color: white;
+}
+
+.instructions {
+    margin: 2%;
+    text-align: center;
+    font-size: 30px;
+    color: white;
+}
+
+.FormContainer {
+    align-self: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 50%;
+    border-radius: 10px;
+    background-color: rgb(43, 226, 211);
+}
+
+.etiquetaForm {
+    color: white;
+    text-align: center;
+    font-size: 25px;
+    margin: 1%;
+}
+
+.inputForm {
+    margin: 1%;
+    background: none;
+    text-align: center;
+    width: 50%;
+    border-top: none;
+    border-left: none;
+    border-bottom: solid white 2px;
+    border-right: solid white 2px;
+    border-radius: 5px;
+}
+
+.inputForm:focus {
+    color: white;
+    border: none;
+    font-family: sans-serif;
+    font-size: 20px;
+    background: none;
+}
+
+.inputForm::placeholder {
+    font-family: sans-serif;
+    color: white;
+    font-size: 20px;
+}
+
+.button {
+    padding: 1%;
+    background: none;
+    border-radius: 10px;
+    border: solid white 2px;
+    color: white;
+    margin: 2%;
+}
+
+.botonTienda {
+    margin-top: 3%;
+    font-family: sans-serif;
+    font-size: 20px;
+    padding: .5%;
+    color: white;
+    margin-left: 2%;
+    text-decoration: none;
+    border: 1px solid white;
+    background-color: rgb(43, 150, 226);
+    border-radius: 10px;
+    width: fit-content;
+}
+
+.productsTittle {
+    margin-top: 2%;
+    font-family: sans-serif;
+    color: white;
+    font-size: 40px;
+    text-align: center;
+}
+
+.productListContainer {
+    margin: 2%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.productCard {
+    margin: 2%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    background-color: rgb(130, 207, 238);
+    border-radius: 10px;
+    width: 300px;
+    height: 300px;
+}
+
+.productTittle {
+    font-family: sans-serif;
+    font-size: 30px;
+    text-align: center;
+    color: white;
+}
+
+.productImage {
+    border-radius: 10px;
+    width: 70%;
+    height: auto;
+}
+
+.productPrice {
+    font-family: sans-serif;
+    font-size: 20px;
+    color: white;
+}
+
+.botonInicio {
+    margin-top: 3%;
+    font-family: sans-serif;
+    font-size: 20px;
+    padding: .5%;
+    color: white;
+    margin-left: 2%;
+    text-decoration: none;
+    border: 1px solid white;
+    background-color: blueviolet;
+    border-radius: 10px;
+    width: fit-content;
+}
+
+.empty {
+    color: white;
+    font-family: sans-serif;
+    font-size: 30px;
+}
