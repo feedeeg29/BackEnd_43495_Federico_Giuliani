@@ -1,0 +1,22 @@
+</br>
+<h1>Este es mi listado de productos</h1>
+
+<ul class="productListContainer">
+
+    {{#each products}}
+    <li class="productCard">
+        <h2 class="productTittle">
+            {{name}}
+        </h2>
+        <img class="productImage" src={{thumbnail}} alt={{tittle}}>
+        <p class="productPrice">
+            Precio ${{price}}.00
+        </p>
+    </li>
+    {{/each}}
+
+</ul>
+
+<a class="botonInicio" href="/">
+    Inicio
+</a>

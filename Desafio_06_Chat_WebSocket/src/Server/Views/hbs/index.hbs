@@ -1,0 +1,23 @@
+<h1 class="tittle">
+    Formulario de producto
+</h1>
+<p class="instructions">
+    Llena los campos requeridos para guardar un nuevo producto
+</p>
+<form class="FormContainer" action="/productos" method="post">
+    <label class="etiquetaForm" for="tittle">
+        Nombre de producto
+    </label>
+    <input placeholder="Ingresa un nombre" class="inputForm" type="text" name="tittle">
+
+    <label class="etiquetaForm" for="price">Precio del producto</label>
+    <input placeholder="Ingresa el precio" class="inputForm" type="text" name="price">
+
+    <label class="etiquetaForm" for="thumbnail">Url de la imagen del producto</label>
+    <input placeholder="url de la imagen" class="inputForm" type="text" name="thumbnail">
+
+    <input class="button" type="submit" value="Añadir">
+</form>
+<a class="botonTienda" href="/productos/all">
+    Ver todos los productos
+</a>
