@@ -1,33 +1,26 @@
 const express = require('express')
 const router = require('../Routes/routes.js')
 const app = express()
-const PORT = 8080
+const PORT = 3030
 const httpServer = require("http").createServer(app);
 const io = require("socket.io")(httpServer);
+const path = require("path")
 
 
 
 //middleware
 app.use(express.static('public'));
+app.use(express.static(__dirname + "src"))
+app.use(express.static(path.join(__dirname + "public")))
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use('/productos', router)
 
 //
 
-//chat Socket.io
-const mensajes = [];
-io.on("connection", (socket) => {
-  console.log("Nuevo Usuario Conectado");
-  socket.emit("mensajes", mensajes);
-  socket.on("mensaje", (data) => {
-    mensajes.push({ socketid: socket.id, mensaje: data });
-    io.sockets.emit("mensajes", mensajes);
-    console.log(mensajes);
-  })
-})
 
-//Views Handlebars
+
+//Views Handlebars Config
 
 const { engine } = require('express-handlebars')
 app.set('view engine', 'hbs');
@@ -40,23 +33,39 @@ app.engine('hbs', engine({
   partialsDir: __dirname + '/Views/hbs/partials',
 }));
 
-
-
-
 app.get("/", (req, res) => {
-  res.render("index")
+  res.render("form")
 });
+
 app.get("/all", (req, res) => {
   res.render("products")
 })
 
 app.get("/productos", (req, res) => {
-  res.render("index")
+  res.render("form")
 });
 
 app.get("/chat", (req, res) => {
   res.render("chat")
 })
+
+
+
+io.on("connection", (socket) => {
+  console.log("Se ha conectado un usuario");
+  io.sockets.emit("lastProducts", productos.getAll());
+  socket.emit("chat", chat);
+
+  socket.on("userMsg", (data) => {
+    chat.push(data);
+    io.sockets.emit("chat", chat);
+    saveChat();
+  });
+});
+
+
+
+
 
 // Server conectado exitosamente
 const server = httpServer.listen(PORT, () => console.log(`Server running on port ${PORT}`))

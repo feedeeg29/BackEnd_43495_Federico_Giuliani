@@ -1,8 +1,17 @@
-<h1>Chat con nosotros</h1>
-<input id="mensaje" type="text">
-<button id="enviarMensaje">Enviar</button>
-<p id="mensajesEnviados"></p>
-<script src="/public/index.js"></script>
-<script <script src="https://cdn.socket.io/4.5.3/socket.io.min.js"
-    integrity="sha384-WPFUvHkB1aHA5TDSZi6xtDgkF0wXJcIIxXhC6h8OT8EH3fC5PWro5pWJ1THjcfEi"
-    crossorigin="anonymous"></script>></script>
+<div class="container mt-5 border border-4 p-5">
+    <h2 class="text-center">Chat en vivo</h2>
+    <form onsubmit="return sendMsg()" class="d-flex justify-content-around p-5">
+        <div>
+            <label for="email">Inserte su correo electrónico</label>
+            <input id="userEmail" type="email" name="email" required />
+        </div>
+        <div>
+            <label for="message">Inserte su mensaje</label>
+            <input id="userMsg" type="text" name="message" required />
+        </div>
+        <input type="submit" value="Enviar" />
+    </form>
+    <div id="div-chats" class="container d-flex flex-column border border-2">
+        {{!-- JS InnerHTML --}}
+    </div>
+</div>

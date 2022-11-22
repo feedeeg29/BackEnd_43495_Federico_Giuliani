@@ -1,21 +1,3 @@
-/*const socket = io();
-
-const input = document.getElementById("mensaje")
-
-document.getElementById("enviarMensaje").addEventListener("click", () => {
-
-    socket.emit("mensaje", input.value)
-
-    input.value = ""
-
-})
-
-socket.on("mensajes", (mensajes) => {
-    const mensajesInput = mensajes.map((mensaje) => `SocketId: ${mensaje.socketid} ..... mensajes: ${mensaje.mensaje}`)
-        .join("<br>");
-    document.getElementById("mensajesEnviados").innerHTML = mensajesInput;
-
-})*/
 const socket = io();
 socket.on("connect", () => {
     console.log("Usuario conectado");
