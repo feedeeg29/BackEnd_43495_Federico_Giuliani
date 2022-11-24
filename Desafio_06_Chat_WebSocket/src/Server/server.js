@@ -1,10 +1,11 @@
 const express = require('express')
 const router = require('../Routes/routes.js')
 const app = express()
-const PORT = 3030
+const PORT = process.env.PORT || 3030
 const httpServer = require("http").createServer(app);
 const io = require("socket.io")(httpServer);
 const path = require("path")
+const Actions = require("../Controller/controller");
 
 
 
@@ -49,17 +50,15 @@ app.get("/chat", (req, res) => {
   res.render("chat")
 })
 
-
+const chat = []
 
 io.on("connection", (socket) => {
   console.log("Se ha conectado un usuario");
-  io.sockets.emit("lastProducts", productos.getAll());
-  socket.emit("chat", chat);
-
+  io.sockets.emit("lastProducts", Actions.getAll());
   socket.on("userMsg", (data) => {
     chat.push(data);
     io.sockets.emit("chat", chat);
-    saveChat();
+    /* saveChat(); */
   });
 });
 
