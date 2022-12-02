@@ -39,8 +39,9 @@ app.get("/", (req, res) => {
   res.render("form")
 });
 
-app.get("/all", (req, res) => {
+app.use("/all", (req, res) => {
   res.render("products")
+  console.log(products)
 })
 
 app.get("/productos", (req, res) => {

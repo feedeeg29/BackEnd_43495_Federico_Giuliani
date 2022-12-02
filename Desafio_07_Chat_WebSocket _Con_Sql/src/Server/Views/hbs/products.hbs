@@ -1,0 +1,28 @@
+</br>
+<h1>Este es mi listado de productos</h1>
+
+<ul class="productListContainer">
+    {{#if products}}
+    {{#each products}}
+    <li class="productCard">
+        <h2 class="productTittle">
+            {{products.name}}
+        </h2>
+        <img class="productImage" src={{products.thumbnail}} alt={{products.name}}>
+        <p class="productPrice">
+            Precio ${{products.price}}.00
+        </p>
+    </li>
+    {{/each}}
+    {{else}}
+    <p>No hay productos</p>
+    {{/if}}
+
+</ul>
+
+<a class="botonInicio" href="/">
+    Inicio
+</a>
+
+</div>
+</div>
