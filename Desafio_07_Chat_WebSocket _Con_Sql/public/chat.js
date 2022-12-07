@@ -4,10 +4,12 @@ socket.on("connect", () => {
     //console.log("Usuario conectado");
 })
 const sendMsg = () => {
-    const userEmail = document.getElementById("userEmail").value;
-    const userMsg = document.getElementById("userMsg").value;
-    let date = new Date().toLocaleString();
-    socket.emit("userMsg", { userEmail, userMsg, date });
+    const mensaje = {
+        userEmail: document.getElementById("userEmail").value,
+        userMsg: document.getElementById("userMsg").value,
+        date: new Date().toLocaleString()
+    }
+    socket.emit("userMsg", mensaje);
     document.getElementById("userMsg").value = "";
     return false;
 };
@@ -28,4 +30,5 @@ socket.on("chat", (data) => {
     });
 });
 
-
+socket.on('productos', function () { renderProducts(); });
+socket.on('messages', function (data) { renderMessages(data); });

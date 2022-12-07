@@ -1,39 +1,25 @@
 const express = require("express");
-const { Router } = express;
+const { Router } = require('express');
 const router = Router();
 const Actions = require("../Controller/controller");
-const handlebars = require("express-handlebars");
 
 
-/*function renderProducts() {
-  fetch('http://localhost:8080/product-list')
-    .then(response => response.json())
-    .then(data => {
-      const html = data.map((products, index) => {
-        return (
-          `<tr>
-            <td>${products.name}</td>
-            <td>${products.price}</td>
-            <td><img src="${products.thumbnail}" class="productImage" alt="${products.name}"></td>                  
-          </tr>`
-        )
-      }).join(" ");
-      document.getElementById('tbodylist').innerHTML = html;
-    });
-}*/
+
 // return all products
-router.get('/all', (req, res) => {
-  let datos = { "products": Actions.getAll() }
+router.get('/all', async (req, res) => {
+  let datos = await Actions.getAll()
 
   if (datos.length === 0) {
+
     res.render("vacio")
   } else {
-    res.render("products", datos)
+    console.log(datos)
+    res.render("products", { products: datos })
   }
 })
 
-router.get("/product-list", (req, res) => {
-  const datos = Actions.getAll()
+router.get("/product-list", async (req, res) => {
+  const datos = await Actions.getAll()
 
     .then((data) => {
       res.status(200).json(data)
@@ -44,9 +30,10 @@ router.get("/product-list", (req, res) => {
     })
 })
 // return a product by id
-router.get("/:id", (req, res) => {
+router.get("/:id", async (req, res) => {
   const { id } = req.params;
-  res.send(Actions.getOne(id));
+  const data = await Actions.getOne(id)
+  res.send(data);
 });
 
 // add a new product
@@ -58,5 +45,4 @@ router.post("/", (req, res) => {
 
 
 
-
-module.exports = router;
+module.exports = router; 

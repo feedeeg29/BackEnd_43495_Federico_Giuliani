@@ -7,6 +7,7 @@ const io = require("socket.io")(httpServer);
 const path = require("path")
 const fs = require('fs');
 const Actions = require("../Controller/controller");
+const chat = require("../Chat/chat")
 
 
 
@@ -52,27 +53,49 @@ app.get("/chat", (req, res) => {
   res.render("chat")
 })
 
-const chat = []
 
 
-const saveChat = () => {
+
+/*const saveChat = () => {
   try {
     fs.writeFileSync(`./chatLog.txt`, JSON.stringify(chat, null, 2));
   } catch {
     console.log("Error en la escritura");
   }
-};
+};*/
 
-io.on("connection", (socket) => {
+/*io.on("connection", async (socket) => {
   console.log("Se ha conectado un usuario");
-  io.sockets.emit("products", Actions.getAll());
+  const chat = await chat.list()
+
   socket.on("userMsg", (data) => {
-    chat.push(data);
+    chat.save(data);
     io.sockets.emit("chat", chat);
     saveChat();
   });
-});
+});*/
+io.on('connection', async function (socket) {
+  //mensaje en consola cuando se conecta un usuario
+  console.log('Un cliente se ha conectado');
 
+  const messages = await chat.list();
+  socket.emit('messages', messages);
+
+  io.sockets.emit('productos');
+
+  //funcion para guardar un mensaje y emitirlo a todos los usuarios
+  socket.on('userMsg', async function (data) {
+    try {
+      chat.save(data);
+      const messages = await chat.list();
+      io.sockets.emit('messages', messages);
+    } catch (err) {
+      console.log(err);
+    }
+
+  });
+
+});
 
 
 
