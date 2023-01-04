@@ -7,16 +7,17 @@ const sendMsg = () => {
     const mensaje = {
         userEmail: document.getElementById("userEmail").value,
         userMsg: document.getElementById("userMsg").value,
-        date: new Date().toLocaleString()
+        date: `${(new Date).toLocaleDateString()} - ${(new Date).toLocaleTimeString()}`,
     }
     socket.emit("userMsg", mensaje);
     document.getElementById("userMsg").value = "";
     return false;
 };
 
-socket.on("chat", (data) => {
+socket.on("userMsg", (data) => {
     const divFiller = document.getElementById("div-chats");
     divFiller.innerHTML = "";
+    console.log(data)
     data.map((message) => {
         divFiller.innerHTML += `<div class="m-3 d-flex justify-content-between">
                                 <div>

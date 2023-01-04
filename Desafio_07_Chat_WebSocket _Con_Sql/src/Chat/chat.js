@@ -19,7 +19,8 @@ const save = async (message) => {
                 return ('Mensaje Enviado')
             })
             .catch((err) => {
-                throw new Error('No se pudo leer la Base de Datos', err)
+                console.error(err)
+                //throw new Error('No se pudo leer la Base de Datos', err)
             })
     } catch (err) {
         throw new Error('No se pudo leer la Base de Datos', err)

@@ -3,9 +3,9 @@ const knex = require('knex')(options);
 
 knex.schema.createTable('chat', (table) => {
     table.increments('id');
-    table.string('email');
-    table.string('fecha');
-    table.string('mensaje');
+    table.string('userEmail');
+    table.string('date');
+    table.string('userMsg');
 }).then(() => {
     console.log('Tabla "Chat" creada');
 }).catch((err) => {
